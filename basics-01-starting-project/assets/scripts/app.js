@@ -23,6 +23,13 @@ function writeToLog(operationIdentifier,prevResult, operationNumber, newResult){
 }
 
 function calculateResult(calculationType){
+    if( calculationType !== "ADD" &&
+        calculationType !== "SUBTRACT" &&
+        calculationType !== "MULTIPLY" &&
+        calculationType !== "DIVIDE"
+    ){ //This will never run the way the code is structured.
+        return;
+    }
     const enteredNumber = getUserNumberInput();
     const initialResult = currentResult;
     let mathOperator;
