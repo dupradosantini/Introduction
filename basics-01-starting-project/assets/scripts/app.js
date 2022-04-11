@@ -26,7 +26,8 @@ function calculateResult(calculationType){
     if( calculationType !== "ADD" &&
         calculationType !== "SUBTRACT" &&
         calculationType !== "MULTIPLY" &&
-        calculationType !== "DIVIDE"
+        calculationType !== "DIVIDE" ||
+        enteredNumber === 0
     ){ //This will never run the way the code is structured.
         return;
     }
