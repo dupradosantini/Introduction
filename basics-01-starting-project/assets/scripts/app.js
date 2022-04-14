@@ -23,6 +23,7 @@ function writeToLog(operationIdentifier,prevResult, operationNumber, newResult){
 }
 
 function calculateResult(calculationType){
+    const enteredNumber = getUserNumberInput();
     if( calculationType !== "ADD" &&
         calculationType !== "SUBTRACT" &&
         calculationType !== "MULTIPLY" &&
@@ -31,7 +32,6 @@ function calculateResult(calculationType){
     ){ //This will never run the way the code is structured.
         return;
     }
-    const enteredNumber = getUserNumberInput();
     const initialResult = currentResult;
     let mathOperator;
     if (calculationType === "ADD"){
@@ -51,24 +51,8 @@ function calculateResult(calculationType){
     writeToLog(calculationType, initialResult, enteredNumber, currentResult);
 }
 
-function add(){
-    calculateResult("ADD");
-}
-
-function subtract(){
-    calculateResult("SUBTRACT");
-}
-
-function multiply(){
-    calculateResult("MULTIPLY");
-}
-
-function divide(){
-    calculateResult("DIVIDE");
-}
-
-addBtn.addEventListener('click', add);
-subtractBtn.addEventListener('click', subtract);
-multiplyBtn.addEventListener('click',multiply);
-divideBtn.addEventListener('click',divide);
+addBtn.addEventListener('click', calculateResult.bind(this, "ADD"));
+subtractBtn.addEventListener('click', calculateResult.bind(this,"SUBTRACT"));
+multiplyBtn.addEventListener('click', calculateResult.bind(this, "MULTIPLY"));
+divideBtn.addEventListener('click', calculateResult.bind(this,"DIVIDE"));
 
